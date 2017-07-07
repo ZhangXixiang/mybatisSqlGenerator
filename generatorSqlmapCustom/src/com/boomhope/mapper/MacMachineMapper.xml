@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boomhope.dao.MacMachineMapper" >
+  <resultMap id="BaseResultMap" type="com.boomhope.po.MacMachine" >
+    <id column="MAC_ID" property="macId" jdbcType="VARCHAR" />
+    <result column="UNIT_CODE" property="unitCode" jdbcType="VARCHAR" />
+    <result column="MAC_ADDRESS" property="macAddress" jdbcType="VARCHAR" />
+    <result column="IP_ADDRESS" property="ipAddress" jdbcType="VARCHAR" />
+    <result column="PORT" property="port" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="VARCHAR" />
+    <result column="CREATER" property="creater" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MAC_ID, UNIT_CODE, MAC_ADDRESS, IP_ADDRESS, PORT, STATUS, CREATE_DATE, CREATER
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from VIP.MAC_MACHINE
+    where MAC_ID = #{macId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from VIP.MAC_MACHINE
+    where MAC_ID = #{macId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.boomhope.po.MacMachine" >
+    insert into VIP.MAC_MACHINE (MAC_ID, UNIT_CODE, MAC_ADDRESS, 
+      IP_ADDRESS, PORT, STATUS, 
+      CREATE_DATE, CREATER)
+    values (#{macId,jdbcType=VARCHAR}, #{unitCode,jdbcType=VARCHAR}, #{macAddress,jdbcType=VARCHAR}, 
+      #{ipAddress,jdbcType=VARCHAR}, #{port,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.boomhope.po.MacMachine" >
+    insert into VIP.MAC_MACHINE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="macId != null" >
+        MAC_ID,
+      </if>
+      <if test="unitCode != null" >
+        UNIT_CODE,
+      </if>
+      <if test="macAddress != null" >
+        MAC_ADDRESS,
+      </if>
+      <if test="ipAddress != null" >
+        IP_ADDRESS,
+      </if>
+      <if test="port != null" >
+        PORT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="creater != null" >
+        CREATER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="macId != null" >
+        #{macId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitCode != null" >
+        #{unitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="macAddress != null" >
+        #{macAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null" >
+        #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null" >
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.boomhope.po.MacMachine" >
+    update VIP.MAC_MACHINE
+    <set >
+      <if test="unitCode != null" >
+        UNIT_CODE = #{unitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="macAddress != null" >
+        MAC_ADDRESS = #{macAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null" >
+        IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null" >
+        PORT = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null" >
+        CREATER = #{creater,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MAC_ID = #{macId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.boomhope.po.MacMachine" >
+    update VIP.MAC_MACHINE
+    set UNIT_CODE = #{unitCode,jdbcType=VARCHAR},
+      MAC_ADDRESS = #{macAddress,jdbcType=VARCHAR},
+      IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      PORT = #{port,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=VARCHAR},
+      CREATER = #{creater,jdbcType=VARCHAR}
+    where MAC_ID = #{macId,jdbcType=VARCHAR}
+  </update>
+</mapper>
